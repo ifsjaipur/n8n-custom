@@ -1,23 +1,6 @@
-FROM docker.n8n.io/n8nio/n8n:latest
+FROM docker.n8n.io/n8nio/n8n:2
 
 USER root
-
-RUN npm install -g \
-    axios \
-    lodash \
-    dayjs \
-    papaparse \
-    cheerio \
-    pdf-lib \
-    qrcode \
-    crypto-js \
-    form-data \
-    he \
-    node-fetch@2
-
-RUN echo "try { if (!global.fetch) global.fetch = require('node-fetch'); } catch(e) {}" \
-    >> /usr/local/lib/node_modules/n8n/config/custom.js || true
-
 
 RUN apt-get update && \
     apt-get install -y \
@@ -29,5 +12,3 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 
 USER node
-
-
