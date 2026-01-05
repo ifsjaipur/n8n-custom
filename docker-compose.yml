@@ -1,5 +1,6 @@
 services:
   n8n:
+    image: custom-n8n:2.1.5
     build: .
     ports:
       - "5678:5678"
